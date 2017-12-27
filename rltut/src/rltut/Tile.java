@@ -28,7 +28,7 @@ public enum Tile {
 	}
 
 	public boolean isGround() {
-		return this == Tile.FLOOR;
+		return this != WALL && this != BOUNDS;
 	}
 
 }
