@@ -2,6 +2,11 @@ package rltut;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JFrame;
 
@@ -35,10 +40,14 @@ public class ApplicationMain extends JFrame implements KeyListener{
 		super.repaint();
 	}
 	
-	public static void main(String[] argv) {
+	public static void main(String[] argv) throws SecurityException, IOException {
 		ApplicationMain app = new ApplicationMain();
 		app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		app.setVisible(true);
+		
+		Handler fh = new FileHandler("rltut.log");
+		Logger.getLogger("").addHandler(fh);
+		Logger.getLogger("rltut").setLevel(Level.FINEST);
 	}
 
 	@Override

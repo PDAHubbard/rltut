@@ -4,7 +4,7 @@ public class CreatureAi {
 
 	protected Creature creature;
 	
-	public CreatureAi(Creature creatue) {
+	public CreatureAi(Creature creature) {
 		this.creature=creature;
 		this.creature.setCreatureAi(this);
 	}

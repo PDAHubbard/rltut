@@ -23,7 +23,7 @@ public class Creature {
 	}
 	
 	public void moveBy(int mx, int my) {
-		ai.onEnter(x+mx, y+mx, world.tile(x+mx, y+my));
+		ai.onEnter(x+mx, y+my, world.tile(x+mx, y+my));
 	}
 	
 	public Creature(World world, char glyph, Color color) {
