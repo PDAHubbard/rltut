@@ -23,12 +23,31 @@ public class Creature {
 	}
 	
 	public void moveBy(int mx, int my) {
-		ai.onEnter(x+mx, y+my, world.tile(x+mx, y+my));
+		Creature other = world.creature(x+mx,  y+my);
+		
+		if (other==null)
+			ai.onEnter(x+mx, y+my, world.tile(x+mx, y+my));
+		else
+			attack(other);
 	}
 	
+	private void attack(Creature other) {
+		world.remove(other);
+		
+	}
+
 	public Creature(World world, char glyph, Color color) {
 		this.world = world;
 		this.glyph=glyph;
 		this.color=color;
 	}
+
+	public void update() {
+		ai.onUpdate();
+	}
+
+	public boolean canEnter(int x2, int y2) {
+		return world.tile(x2, y2).isGround() && world.creature(x2, y2)==null;
+	}
+
 }
